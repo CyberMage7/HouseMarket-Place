@@ -13,6 +13,7 @@ import {
 import { db } from "../Firebase.config";
 import { toast } from "react-toastify";
 import Spinner from "../components/Spinner";
+import ListingItem from "../components/ListingItem";
 
 function Category() {
   const [listings, setListings] = useState(null);
@@ -48,7 +49,7 @@ function Category() {
       }
     };
     fetchListings();
-  },[params.categoryName]);
+  }, [params.categoryName]);
 
   return (
     <div className="category">
@@ -63,13 +64,14 @@ function Category() {
         <Spinner />
       ) : listings && listings.length > 0 ? (
         <>
-        <main>
-        <ul className="categoryListings">
-            {listings.map((listing) =>(
-                <h3 key={listing.id}>{listing.data.name}</h3>
-            ))}
-        </ul>
-            </main></>
+          <main>
+            <ul className="categoryListings">
+              {listings.map((listing) => (
+                <ListingItem listing={listing.data} id={listing.id} />
+              ))}
+            </ul>
+          </main>
+        </>
       ) : (
         <p>No Listings for {params.categoryName}</p>
       )}
