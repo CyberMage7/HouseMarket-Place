@@ -2,8 +2,10 @@ import { useState } from "react";
 import { getAuth, updateProfile } from "firebase/auth";
 import { useNavigate, Link } from "react-router-dom";
 import { doc, updateDoc } from "firebase/firestore";
-import {db} from '../Firebase.config';
-import {toast} from 'react-toastify';
+import { db } from "../Firebase.config";
+import { toast } from "react-toastify";
+import arrowRight from "../assets/svg/keyboardArrowRightIcon.svg";
+import homeIcon from "../assets/svg/homeIcon.svg";
 
 function Profile() {
   const auth = getAuth();
@@ -23,17 +25,17 @@ function Profile() {
 
   const onSubmit = async () => {
     try {
-      if(auth.currentUser.displayName !==name) {
+      if (auth.currentUser.displayName !== name) {
         await updateProfile(auth.currentUser, {
-          displayName: name
-        })
-        const userRef = doc(db, 'users', auth.currentUser.uid)
+          displayName: name,
+        });
+        const userRef = doc(db, "users", auth.currentUser.uid);
         await updateDoc(userRef, {
-          name
-        })
+          name,
+        });
       }
     } catch (error) {
-      toast.error('Could Not update profile details');
+      toast.error("Could Not update profile details");
     }
   };
 
@@ -76,7 +78,7 @@ function Profile() {
               onChange={onChange}
             />
 
-<input
+            <input
               type="email"
               id="email"
               className={!changeDetails ? "profileEmail" : "profileEmailActive"}
@@ -86,6 +88,11 @@ function Profile() {
             />
           </form>
         </div>
+        <Link to="/create-listing" className="createListing">
+          <img src={homeIcon} alt="Home" />
+          <p>Sell or rent your home </p>
+          <img src={arrowRight} alt="arrow right" />
+        </Link>
       </main>
     </div>
   );
