@@ -46,7 +46,9 @@ function Navbar() {
                   ? "navbarListItemNameActive"
                   : "navbarListItemName"
               }
-            >Offer</p>
+            >
+              Offer
+            </p>
           </li>
           <li className="navbarListItem" onClick={() => navigate("/profile")}>
             <PersonOutlineIcon
@@ -60,7 +62,9 @@ function Navbar() {
                   ? "navbarListItemNameActive"
                   : "navbarListItemName"
               }
-            >Profile</p>
+            >
+              Profile
+            </p>
           </li>
         </ul>
       </nav>

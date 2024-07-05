@@ -63,13 +63,13 @@ function Category() {
       {loading ? (
         <Spinner />
       ) : listings && listings.length > 0 ? (
-          <main>
-            <ul className="categoryListings">
-              {listings.map((listing) => (
-                <ListingItem listing={listing.data} id={listing.id} />
-              ))}
-            </ul>
-          </main>
+        <main>
+          <ul className="categoryListings">
+            {listings.map((listing) => (
+              <ListingItem listing={listing.data} id={listing.id} />
+            ))}
+          </ul>
+        </main>
       ) : (
         <p>No Listings for {params.categoryName}</p>
       )}

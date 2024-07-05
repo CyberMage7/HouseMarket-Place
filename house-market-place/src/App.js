@@ -9,7 +9,7 @@ import SignUp from "./pages/SignUp";
 import Profile from "./pages/Profile";
 import Navbar from "./components/Navbar";
 import PrivateRoute from "./components/PrivateRoute";
-import Category from './pages/Category';
+import Category from "./pages/Category";
 import CreateListing from "./pages/CreateListing";
 
 function App() {
