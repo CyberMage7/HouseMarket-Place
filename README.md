@@ -1,1 +1,1 @@
-# HouseMarket-Place
+# HouseMarket-Place: A place to sell and rent your houses
