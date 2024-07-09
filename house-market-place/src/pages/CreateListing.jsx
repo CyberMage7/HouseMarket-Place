@@ -30,7 +30,7 @@ function CreateListing() {
     images: {},
     latitude: 0,
     longitude: 0,
-    uid: ""
+    uid: "",
   });
 
   const {
