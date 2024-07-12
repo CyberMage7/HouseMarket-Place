@@ -1,5 +1,8 @@
 import React from "react";
 import { useState, useEffect } from "react";
+import SwiperCore, { Navigattion, Pagination, Scrollbar, A11y } from "swiper";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/swiper-bundle.css";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getDoc, doc } from "firebase/firestore";
 import { getAuth } from "firebase/auth";
@@ -35,6 +38,19 @@ function Listing() {
 
   return (
     <main>
+    <Swiper slidesPerView={1} pagination={{ clickable: true }}>
+      {listing.imageUrls.map((url, index) => (
+        <SwiperSlide key={index}>
+          <div
+            style={{
+              background: `url(${url}) center no-repeat`,
+              backgroundSize: "cover",
+            }}
+            className="swiperSlideDiv"
+          />
+        </SwiperSlide>
+      ))}
+    </Swiper>
       <div
         className="shareIconDiv"
         onClick={() => {
@@ -57,7 +73,7 @@ function Listing() {
         </p>
         <p className="listingLocation">{listing.location}</p>
         <p className="listingType">
-          For {listing.type == "rent" ? "Rent" : "Sale"}
+          For {listing.type === "rent" ? "Rent" : "Sale"}
         </p>
         {listing.offer && (
           <p className="discountPrice">
